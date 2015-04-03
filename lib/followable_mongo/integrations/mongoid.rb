@@ -18,7 +18,7 @@ module Mongo
           end
 
           def followable_collection
-            collection.master.collection
+            self
           end
 
           def followable_foreign_key(metadata)
