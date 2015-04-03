@@ -18,11 +18,7 @@ module Mongo
             new_follow_query_and_update(options)
           end
           begin
-            doc = followable_collection.find_and_modify(
-              :query => query,
-              :update => update,
-              :new => true
-            )
+            doc = followable_collection.where(query).find_and_modify(update, :new => true)
           rescue Mongo::OperationFailure => e
             doc = nil
           end
